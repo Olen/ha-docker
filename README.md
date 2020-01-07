@@ -21,6 +21,7 @@ As root:
 	cp -r home-assistant/ /etc/docker/
 
 ... or modify the path for WorkingDirectory in docker-compose@.service to reflect the dir where the home-assistant/docker-compose.yaml-file is located
+... AND change the User and Group in the same file to something more appropriate for your system
 
 	cp docker-cleanup.* /etc/systemd/system/
 	cp docker-compose@.service /etc/systemd/system/
