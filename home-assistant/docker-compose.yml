@@ -6,7 +6,7 @@ services:
       - PUID=1001
       - PGID=1001
       - UDEV=1
-    container_name: homeassistant
+    container_name: home-assistant
     image: homeassistant/intel-nuc-homeassistant:stable
     # image: homeassistant/raspberrypi4-homeassistant:stable
     # image: homeassistant/raspberrypi4-homeassistant:latest
