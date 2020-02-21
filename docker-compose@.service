@@ -4,18 +4,18 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-Restart=always
+Restart=on-failure
 User=olen
 Group=olen
 
-WorkingDirectory=/etc/docker/%i
+WorkingDirectory=/home/olen/docker/%i
 
 # Remove old containers, images and volumes
 ExecStartPre=/usr/bin/docker-compose down -v
 ExecStartPre=/usr/bin/docker-compose rm -fv
-ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=%i_" | xargs docker volume rm'
-ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=%i_" | xargs docker network rm'
-ExecStartPre=-/bin/bash -c 'docker ps -aqf "name=%i_*" | xargs docker rm'
+ExecStartPre=-/bin/bash -c 'docker volume ls -qf "name=%i_" | xargs -r docker volume rm'
+ExecStartPre=-/bin/bash -c 'docker network ls -qf "name=%i_" | xargs -r docker network rm'
+ExecStartPre=-/bin/bash -c 'docker ps -aqf "name=%i_*" | xargs -r docker rm'
 ExecStartPre=/usr/bin/docker-compose pull
 
 # Compose up
