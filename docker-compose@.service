@@ -8,7 +8,7 @@ Restart=on-failure
 User=olen
 Group=olen
 
-WorkingDirectory=/home/olen/docker/%i
+WorkingDirectory=/etc/docker/%i
 
 # Remove old containers, images and volumes
 ExecStartPre=/usr/bin/docker-compose down -v
